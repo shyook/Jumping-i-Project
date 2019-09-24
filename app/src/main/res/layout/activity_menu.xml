@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/menu_addition_bt"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#a0eb79"
+                android:drawableTop="@drawable/icon_plus"
+                android:paddingTop="25dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/menu_addition"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+
+            <Button
+                android:id="@+id/menu_subtraction_bt"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#524d47"
+                android:drawableTop="@drawable/icon_minus"
+                android:paddingTop="25dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/menu_subtraction"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/menu_fraction_bt"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#e7595d"
+                android:drawableLeft="@drawable/icon_multiply"
+                android:paddingLeft="45dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/menu_fraction"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/menu_multiply_bt"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#a084d1"
+                android:drawableTop="@drawable/icon_multiply"
+                android:paddingTop="25dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/menu_multiply"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/menu_divide_bt"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#80e7a9"
+                android:drawableTop="@drawable/icon_divide"
+                android:paddingTop="25dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/menu_divide"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/menu_game_bt"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#63c28c"
+                android:drawableLeft="@drawable/icon_divide"
+                android:paddingLeft="35dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@string/menu_mensa"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+<!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/b6"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:layout_weight="1"
+                android:background="#d9dbd0"
+                android:drawableTop="@drawable/english"
+                android:paddingTop="40dp"
+                android:text="English"
+                android:textAllCaps="false"
+                android:textColor="#2f2e2e"
+                android:textSize="18sp" />
+
+
+            <Button
+                android:id="@+id/b7"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#cc8d66"
+                android:drawableTop="@drawable/books"
+                android:paddingTop="25dp"
+                android:text="Authors"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/b9"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#f71735"
+                android:foreground="?attr/selectableItemBackground"
+                android:drawableTop="@drawable/capital"
+                android:paddingTop="25dp"
+                android:text="Capitals"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+
+
+            <Button
+                android:id="@+id/b10"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="#88a6db"
+                android:drawableTop="@drawable/currency"
+                android:paddingTop="25dp"
+                android:text="Currency"
+                android:foreground="?attr/selectableItemBackground"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+-->
+    </LinearLayout>
+</ScrollView>

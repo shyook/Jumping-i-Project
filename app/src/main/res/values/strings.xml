@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Arithmetic</string>
+
+    <string name="cancel">취소</string>
+    <string name="confirm">확인</string>
+    <string name="yes">예</string>
+    <string name="no">아니오</string>
+
+    <!-- 팝업 -->
+    <string name="popup_default_title">안내</string>
+    <string name="popup_reset_message">초기화 후 다시 가입 하시겠습니까?</string>
+
+    <!-- 인트로 -->
+    <string name="intro_login">GET STARTED</string>
+    <string name="intro_optional">OPTIONAL</string>
+    <string name="intro_male">Male</string>
+    <string name="intro_female">Female</string>
+    <string name="intro_title_join">JOIN</string>
+    <string name="intro_title_login">LOGIN</string>
+    <string name="intro_welcome">Welcome !!!</string>
+    <string name="intro_toast_input_password">비밀번호를 입력해 주세요.</string>
+    <string name="intro_toast_wrong_password">비밀번호가 일치하지 않습니다.</string>
+    <string name="intro_toast_mandatory_error">닉네임은 필수 항목 입니다.</string>
+    <string name="intro_welcome_forget_password">초기화</string>
+    <string name="intro_button_start">CONTINUE</string>
+
+    <!-- 메뉴 -->
+    <string name="menu_addition">더하기</string>
+    <string name="menu_subtraction">빼기</string>
+    <string name="menu_multiply">곱하기</string>
+    <string name="menu_divide">나누기</string>
+    <string name="menu_fraction">분수</string>
+    <string name="menu_mensa">숫자 게임</string>
+</resources>
