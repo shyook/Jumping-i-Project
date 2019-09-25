@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="main_menu">
+        <!-- 메인 메뉴 -->
+        <item>@string/menu_addition</item>
+        <item>@string/menu_subtraction</item>
+        <item>@string/menu_multiply</item>
+        <item>@string/menu_divide</item>
+        <item>@string/menu_fraction</item>
+        <item>@string/menu_mensa</item>
+    </string-array>
+
+    <integer-array name="main_menu_image">
+        <!-- 메인 메뉴 -->
+        <item>@drawable/icon_plus</item>
+        <item>@drawable/icon_minus</item>
+        <item>@drawable/icon_multiply</item>
+        <item>@drawable/icon_divide</item>
+        <item>@drawable/icon_fraction</item>
+        <item>@drawable/icon_quiz</item>
+    </integer-array>
+
+    <string-array name="sub_menu">
+        <!-- 서브 메뉴 -->
+        <item>@string/sub_menu_unit_1</item>
+        <item>@string/sub_menu_unit_10</item>
+        <item>@string/sub_menu_unit_100</item>
+    </string-array>
+    
+    <string-array name="sub_menu_fraction">
+        <!-- 분수 서브 메뉴 -->
+        <item>@string/menu_addition</item>
+        <item>@string/menu_subtraction</item>
+    </string-array>
+</resources>

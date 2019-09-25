@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.MenuActivity"
+        <activity android:name=".ui.menu.MainMenuActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".ui.QuestionActivity"
             android:screenOrientation="portrait" />

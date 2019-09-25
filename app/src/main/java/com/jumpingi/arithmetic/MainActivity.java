@@ -1,7 +1,5 @@
 package com.jumpingi.arithmetic;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +16,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.jumpingi.arithmetic.constants.Constant;
-import com.jumpingi.arithmetic.ui.MenuActivity;
+import com.jumpingi.arithmetic.ui.menu.MainMenuActivity;
 import com.jumpingi.arithmetic.utils.DialogUtils;
 import com.jumpingi.arithmetic.utils.SharedPref;
 
@@ -241,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
      * 게임 메뉴 화면으로 이동 한다.
      */
     private void goGameMenuPage() {
-        Intent intent = new Intent(this, MenuActivity.class);
+        Intent intent = new Intent(this, MainMenuActivity.class);
         this.startActivity(intent);
         finish();
     }

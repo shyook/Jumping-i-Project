@@ -31,4 +31,9 @@
     <string name="menu_divide">나누기</string>
     <string name="menu_fraction">분수</string>
     <string name="menu_mensa">숫자 게임</string>
+
+    <!-- 서브 메뉴 -->
+    <string name="sub_menu_unit_1">1의 단위</string>
+    <string name="sub_menu_unit_10">10의 단위</string>
+    <string name="sub_menu_unit_100">100의 단위</string>
 </resources>
