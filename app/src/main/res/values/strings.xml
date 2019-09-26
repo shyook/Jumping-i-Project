@@ -30,10 +30,20 @@
     <string name="menu_multiply">곱하기</string>
     <string name="menu_divide">나누기</string>
     <string name="menu_fraction">분수</string>
-    <string name="menu_mensa">숫자 게임</string>
+    <string name="menu_quiz">숫자 게임</string>
+
+    <!-- 메뉴 디스크립션 -->
+    <string name="menu_addition_description">덧셈은 산술의 기본 연산 중의 하나이다.\n두 개 이상의 수를 받아 더한 값을 계산하여 답하시오.</string>
+    <string name="menu_subtraction_description">뺄셈은 산술의 기본 연산 중의 하나이다.\n피감수에서 감수를 뺀 값을 계산하여 답하시오.</string>
+    <string name="menu_multiply_description">곱셈은 산술의 기본 연산 중의 하나이다.\n두 자연수의 곱셈은 덧셈의 반복을 나타낸다 두수의 곱셈을 계산하여 답하시오.</string>
+    <string name="menu_divide_description">나눗셈은 산술의 기본 연산 중의 하나이다.\n두 자연수의 나눗셈은 뺄셈의 반복을 나타낸다 두수의 나눗셈을 계산하여 답하시오.</string>
+    <string name="menu_fraction_description">분수는 부분이 전체를 차지하는 비율을 나타내는 수식이다.\n두 분수의 덧셈, 뺄셈을 계산하여 답하시오.</string>
+    <string name="menu_quiz_description">나열된 수들중 두 수를 더한 값이 모두 같도록 답하시오.</string>
 
     <!-- 서브 메뉴 -->
     <string name="sub_menu_unit_1">1의 단위</string>
     <string name="sub_menu_unit_10">10의 단위</string>
     <string name="sub_menu_unit_100">100의 단위</string>
+    <string name="sub_menu_start">시작</string>
+
 </resources>

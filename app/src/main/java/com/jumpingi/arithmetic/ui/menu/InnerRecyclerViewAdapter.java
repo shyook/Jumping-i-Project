@@ -16,7 +16,7 @@ public class InnerRecyclerViewAdapter extends RecyclerView.Adapter<InnerRecycler
     private ArrayList<String> arrNameList;
     private ArrayList<Integer> arrImageList;
 
-    private InnerRecyclerViewAdapter(ArrayList<String> nameList, ArrayList<Integer> imageList) {
+    public InnerRecyclerViewAdapter(ArrayList<String> nameList, ArrayList<Integer> imageList) {
         this.arrNameList = nameList;
         this.arrImageList = imageList;
     }

@@ -125,7 +125,7 @@
                 android:drawableLeft="@drawable/icon_divide"
                 android:paddingLeft="35dp"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/menu_mensa"
+                android:text="@string/menu_quiz"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="#fff"

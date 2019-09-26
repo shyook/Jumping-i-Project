@@ -7,11 +7,21 @@
         <item>@string/menu_multiply</item>
         <item>@string/menu_divide</item>
         <item>@string/menu_fraction</item>
-        <item>@string/menu_mensa</item>
+        <item>@string/menu_quiz</item>
+    </string-array>
+
+    <string-array name="main_menu_description">
+        <!-- 메인 메뉴 설명 -->
+        <item>@string/menu_addition_description</item>
+        <item>@string/menu_subtraction_description</item>
+        <item>@string/menu_multiply_description</item>
+        <item>@string/menu_divide_description</item>
+        <item>@string/menu_fraction_description</item>
+        <item>@string/menu_quiz_description</item>
     </string-array>
 
     <integer-array name="main_menu_image">
-        <!-- 메인 메뉴 -->
+        <!-- 메인 메뉴 이미지 -->
         <item>@drawable/icon_plus</item>
         <item>@drawable/icon_minus</item>
         <item>@drawable/icon_multiply</item>
@@ -26,10 +36,23 @@
         <item>@string/sub_menu_unit_10</item>
         <item>@string/sub_menu_unit_100</item>
     </string-array>
+
+    <integer-array name="sub_menu_image">
+        <!-- 메인 메뉴 이미지 -->
+        <item>@drawable/ic_unit_1</item>
+        <item>@drawable/ic_unit_10</item>
+        <item>@drawable/ic_unit_100</item>
+    </integer-array>
     
     <string-array name="sub_menu_fraction">
         <!-- 분수 서브 메뉴 -->
         <item>@string/menu_addition</item>
         <item>@string/menu_subtraction</item>
     </string-array>
+
+    <integer-array name="sub_menu_fraction_image">
+        <!-- 메인 메뉴 이미지 -->
+        <item>@drawable/ic_plus</item>
+        <item>@drawable/ic_minus</item>
+    </integer-array>
 </resources>
