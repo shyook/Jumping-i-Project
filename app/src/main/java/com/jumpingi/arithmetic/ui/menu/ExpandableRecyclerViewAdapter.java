@@ -23,6 +23,7 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
     private ArrayList<Integer> counter = new ArrayList<>();
     private ArrayList<ArrayList> mItemNameList;
     private ArrayList<ArrayList> mItemSubImageList;
+    private IMainMenuClickListener mListener;
     private Context mContext;
 
     public ExpandableRecyclerViewAdapter(Context context,
@@ -30,13 +31,15 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
                                          ArrayList<Integer> mainMenuImage,
                                          ArrayList<String> mainMenuDescription,
                                          ArrayList<ArrayList> itemNameList,
-                                         ArrayList<ArrayList> itemSubImageList) {
+                                         ArrayList<ArrayList> itemSubImageList,
+                                         IMainMenuClickListener listener) {
         this.mMainMenuList = mainMenu;
         this.mMainMenuImage = mainMenuImage;
         this.mMainMenuDescriptionList = mainMenuDescription;
         this.mItemNameList = itemNameList;
         this.mItemSubImageList = itemSubImageList;
         this.mContext = context;
+        this.mListener = listener;
 
         for (int i = 0; i < mMainMenuList.size(); i++) {
             counter.add(0);
@@ -56,11 +59,12 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.name.setText(mMainMenuList.get(position));   // 메뉴 이름
+        String strMainMenuName = mMainMenuList.get(position);
+        holder.name.setText(strMainMenuName);   // 메뉴 이름
         holder.mainMenuImage.setImageResource(mMainMenuImage.get(position));    // 메뉴 이미지
         holder.description.setText(mMainMenuDescriptionList.get(position)); // 메뉴 설명
         // 서브 메뉴 셋팅
-        InnerRecyclerViewAdapter itemInnerRecyclerView = new InnerRecyclerViewAdapter(mItemNameList.get(position), mItemSubImageList.get(position));
+        InnerRecyclerViewAdapter itemInnerRecyclerView = new InnerRecyclerViewAdapter(position, strMainMenuName, mItemNameList.get(position), mItemSubImageList.get(position), mListener);
         holder.cardRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

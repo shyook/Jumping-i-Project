@@ -1,7 +1,9 @@
 package com.jumpingi.arithmetic.ui.menu;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jumpingi.arithmetic.R;
+import com.jumpingi.arithmetic.constants.Constant;
+import com.jumpingi.arithmetic.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainMenuActivity extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity implements IMainMenuClickListener {
     private RecyclerView mExpanderRecyclerView;
+    private ArrayList<ArrayList> arrChildListHolder;
+    private ArrayList<String> arrMainMenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
         String[] subMenu = getResources().getStringArray(R.array.sub_menu);
         String[] subMenuFraction = getResources().getStringArray(R.array.sub_menu_fraction);
 
-        ArrayList<String> arrMainMenu = new ArrayList<>(Arrays.asList(mainMenu));
+        arrMainMenu = new ArrayList<>(Arrays.asList(mainMenu));
         ArrayList<String> arrMainMenuDescription = new ArrayList<>(Arrays.asList(mainMenuDescription));
         ArrayList<Integer> arrMainMenuImage = new ArrayList<>(mainMenuImage.length);
         for (int i = 0; i < mainMenuImage.length; i++) {
@@ -79,7 +85,7 @@ public class MainMenuActivity extends AppCompatActivity {
             arrSubMenuFractionImage.add(subMenuFractionImage[i]);
         }
 
-        ArrayList<ArrayList> arrChildListHolder = new ArrayList<>();
+        arrChildListHolder = new ArrayList<>();
         ArrayList<ArrayList> arrChildListImageHolder = new ArrayList<>();
 
         ArrayList<String> arrChildSubMenu = new ArrayList<>(Arrays.asList(subMenu));
@@ -106,8 +112,27 @@ public class MainMenuActivity extends AppCompatActivity {
 
         ExpandableRecyclerViewAdapter expandableCategoryRecyclerViewAdapter =
                 new ExpandableRecyclerViewAdapter(getApplicationContext(), arrMainMenu, arrMainMenuImage, arrMainMenuDescription
-                        , arrChildListHolder, arrChildListImageHolder);
+                        , arrChildListHolder, arrChildListImageHolder, this);
         mExpanderRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mExpanderRecyclerView.setAdapter(expandableCategoryRecyclerViewAdapter);
+    }
+
+    @Override
+    public void onMenuClick(String strMainMenu, String strSubMenu) {
+        Log.i("TEST", "Main Menu : " + strMainMenu + "  Sub Menu : " + strSubMenu);
+        String strType;
+        String strClickMenu = strMainMenu + strSubMenu;
+        for (int i = 0; i < arrMainMenu.size(); i++) {
+            for (int j = 0; j < arrChildListHolder.get(i).size(); j++) {
+                strType = arrMainMenu.get(i) + arrChildListHolder.get(i).get(j);
+
+                if (strType.equals(strClickMenu)) {
+                    Intent intent = new Intent(MainMenuActivity.this, QuestionActivity.class);
+                    intent.putExtra(Constant.IntentParam.INTENT_KEY_MENU_TYPE, strType);
+                    startActivity(intent);
+                    return;
+                }
+            }
+        }
     }
 }

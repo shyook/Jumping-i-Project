@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jumpingi.arithmetic.R;
-import com.jumpingi.arithmetic.ui.QuestionActivity;
+import com.jumpingi.arithmetic.ui.question.QuestionActivity;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mAddBt, mSubtractionBt, mMultiplyBt, mDivideBt, mFractionBt, mQuizBt;
