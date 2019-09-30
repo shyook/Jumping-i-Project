@@ -20,4 +20,13 @@ public interface Constant {
     interface IntentParam {
         String INTENT_KEY_MENU_TYPE = "TYPE";
     }
+
+    int TOTAL_QUESTION_GENERATE = 10;
+
+    interface UNIT_TYPE {
+        int UNIT_TYPE_1 = 10;
+        int UNIT_TYPE_10 = 100;
+        int UNIT_TYPE_100 = 1000;
+    }
+
 }

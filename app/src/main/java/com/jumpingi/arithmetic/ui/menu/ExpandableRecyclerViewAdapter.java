@@ -16,14 +16,17 @@ import com.jumpingi.arithmetic.R;
 
 import java.util.ArrayList;
 
+/**
+ * 메인 메뉴를 디스플레이 하기 위한 Adapter.
+ */
 public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<ExpandableRecyclerViewAdapter.ViewHolder> {
-    private ArrayList<String> mMainMenuList;
-    private ArrayList<Integer> mMainMenuImage;
-    private ArrayList<String> mMainMenuDescriptionList;
-    private ArrayList<Integer> counter = new ArrayList<>();
-    private ArrayList<ArrayList> mItemNameList;
-    private ArrayList<ArrayList> mItemSubImageList;
-    private IMainMenuClickListener mListener;
+    private ArrayList<String> mMainMenuList;                    // 메인 메뉴 이름
+    private ArrayList<Integer> mMainMenuImage;                  // 메인 메뉴에 들어가는 이미지 리소스
+    private ArrayList<String> mMainMenuDescriptionList;         // 메인 메뉴 이름 아래 상세 설명
+    private ArrayList<Integer> counter = new ArrayList<>();     // 현재 선택된 메뉴 펼쳐 보이기 위한 플레그
+    private ArrayList<ArrayList> mItemNameList;                 // 서브 메뉴 이름
+    private ArrayList<ArrayList> mItemSubImageList;             // 서브 메뉴에 들어가는 이미지 리소스
+    private IMainMenuClickListener mListener;                   // 클릭시 전달 받을 리스너
     private Context mContext;
 
     public ExpandableRecyclerViewAdapter(Context context,
@@ -41,6 +44,7 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
         this.mContext = context;
         this.mListener = listener;
 
+        // 서브 메뉴 펼쳐 보이기 위한 플레그 초기화 셋팅.
         for (int i = 0; i < mMainMenuList.size(); i++) {
             counter.add(0);
         }
@@ -69,6 +73,7 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 클릭에 따라 visible/gone 처리.
                 if (counter.get(position) % 2 == 0) {
                     holder.cardRecyclerView.setVisibility(View.VISIBLE);
                     holder.dropBtn.setImageResource(R.drawable.arrow_up);
@@ -89,11 +94,11 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView name, description;
-        private ImageButton dropBtn;
-        private RecyclerView cardRecyclerView;
-        private CardView cardView;
-        private ImageView mainMenuImage;
+        private TextView name, description;     // 메인 메뉴 이름, 설명
+        private ImageButton dropBtn;            // 펼침, 접힘 이미지 버튼
+        private RecyclerView cardRecyclerView;  // 펼쳤을때 서브 메뉴 뷰
+        private CardView cardView;              // 메인 메뉴 전체 뷰
+        private ImageView mainMenuImage;        // 메인 메뉴 이미지
 
         public ViewHolder(View itemView) {
             super(itemView);

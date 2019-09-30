@@ -46,4 +46,7 @@
     <string name="sub_menu_unit_100">100의 단위</string>
     <string name="sub_menu_start">시작</string>
 
+    <!-- Error -->
+    <string name="error_select_menu_type">메뉴를 선택 후 다시 시도해 주세요.</string>
+
 </resources>
