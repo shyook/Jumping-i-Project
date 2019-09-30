@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Question {
+    protected QuestionData result = new QuestionData();
+
     public enum QUESTION_TYPE {
         QUESTION_TYPE_ADD_UNIT_1(R.string.menu_addition, R.string.sub_menu_unit_1)
         , QUESTION_TYPE_ADD_UNIT_10(R.string.menu_addition, R.string.sub_menu_unit_10)

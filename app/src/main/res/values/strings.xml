@@ -49,4 +49,10 @@
     <!-- Error -->
     <string name="error_select_menu_type">메뉴를 선택 후 다시 시도해 주세요.</string>
 
+    <!-- 연산 등호 -->
+    <string name="addition_operator">+</string>
+    <string name="subtraction_operator">-</string>
+    <string name="multiply_operator">\u00D7</string>
+    <string name="divide_operator">\u00F7</string>
+
 </resources>

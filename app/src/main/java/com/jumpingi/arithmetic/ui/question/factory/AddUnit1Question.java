@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 public class AddUnit1Question extends Question {
-    QuestionData result = new QuestionData();
     List<Integer> arrFirst = new ArrayList<>();
     List<Integer> arrSecond = new ArrayList<>();
 

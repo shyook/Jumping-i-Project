@@ -30,10 +30,10 @@ public class QuestionFactory {
                 return new AddUnit1Question();
 
             case QUESTION_TYPE_ADD_UNIT_10:
-                return new AddUnit1Question();
+                return new AddUnit10Question();
 
             case QUESTION_TYPE_ADD_UNIT_100:
-                return new AddUnit1Question();
+                return new AddUnit100Question();
 
             case QUESTION_TYPE_SUB_UNIT_1:
                 return new AddUnit1Question();
