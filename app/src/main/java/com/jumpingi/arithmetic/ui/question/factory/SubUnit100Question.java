@@ -31,6 +31,7 @@ public class SubUnit100Question extends Question {
         result.setOperandFirst(convertIntegerToString(arrFirst));
         result.setOperandSecond(convertIntegerToString(arrSecond));
         result.setOperator(R.string.menu_subtraction);
+        result.setUnit(Constant.UNIT_TYPE.UNIT_TYPE_100);
 
         return result;
     }

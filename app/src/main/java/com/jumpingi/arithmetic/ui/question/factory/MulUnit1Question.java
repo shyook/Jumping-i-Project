@@ -31,6 +31,7 @@ public class MulUnit1Question extends Question {
         result.setOperandFirst(convertIntegerToString(arrFirst));
         result.setOperandSecond(convertIntegerToString(arrSecond));
         result.setOperator(R.string.menu_multiply);
+        result.setUnit(Constant.UNIT_TYPE.UNIT_TYPE_1);
 
         return result;
     }

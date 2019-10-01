@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -95,7 +97,7 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<Expandab
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView name, description;     // 메인 메뉴 이름, 설명
-        private ImageButton dropBtn;            // 펼침, 접힘 이미지 버튼
+        private ImageView dropBtn;              // 펼침, 접힘 이미지 버튼
         private RecyclerView cardRecyclerView;  // 펼쳤을때 서브 메뉴 뷰
         private CardView cardView;              // 메인 메뉴 전체 뷰
         private ImageView mainMenuImage;        // 메인 메뉴 이미지

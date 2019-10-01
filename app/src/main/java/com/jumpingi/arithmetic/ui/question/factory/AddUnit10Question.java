@@ -31,6 +31,7 @@ public class AddUnit10Question extends Question {
         result.setOperandFirst(convertIntegerToString(arrFirst));
         result.setOperandSecond(convertIntegerToString(arrSecond));
         result.setOperator(R.string.menu_addition);
+        result.setUnit(Constant.UNIT_TYPE.UNIT_TYPE_10);
 
         return result;
     }
