@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jumpingi.arithmetic.R;
 import com.jumpingi.arithmetic.ui.data.QuestionData;
+import com.jumpingi.arithmetic.utils.UiUtils;
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHolder> {
     private QuestionData mQuestionData;
@@ -36,8 +37,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.firstOperand.setText(mQuestionData.getOperandFirst().get(position));
         holder.secondOperand.setText(mQuestionData.getOperandSecond().get(position));
-        holder.operator.setText(mContext.getString(mQuestionData.getOperator()));
-
+        holder.operator.setText(UiUtils.convertNameToSign(mQuestionData.getOperator(), mContext));
     }
 
     @Override

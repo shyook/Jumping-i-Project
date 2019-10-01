@@ -27,6 +27,7 @@ public interface Constant {
         int UNIT_TYPE_1 = 10;
         int UNIT_TYPE_10 = 100;
         int UNIT_TYPE_100 = 1000;
+        int UNIT_TYPE_2 = 20;
     }
 
 }

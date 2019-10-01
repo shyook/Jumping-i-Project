@@ -13,18 +13,18 @@ public abstract class Question {
         QUESTION_TYPE_ADD_UNIT_1(R.string.menu_addition, R.string.sub_menu_unit_1)
         , QUESTION_TYPE_ADD_UNIT_10(R.string.menu_addition, R.string.sub_menu_unit_10)
         , QUESTION_TYPE_ADD_UNIT_100(R.string.menu_addition, R.string.sub_menu_unit_100)
-        , QUESTION_TYPE_SUB_UNIT_1(R.string.menu_addition, R.string.sub_menu_unit_1)
-        , QUESTION_TYPE_SUB_UNIT_10(R.string.menu_addition, R.string.sub_menu_unit_10)
-        , QUESTION_TYPE_SUB_UNIT_100(R.string.menu_addition, R.string.sub_menu_unit_100)
-        , QUESTION_TYPE_MULTI_UNIT_1(R.string.menu_addition, R.string.sub_menu_unit_1)
-        , QUESTION_TYPE_MULTI_UNIT_10(R.string.menu_addition, R.string.sub_menu_unit_10)
-        , QUESTION_TYPE_MULTI_UNIT_100(R.string.menu_addition, R.string.sub_menu_unit_100)
-        , QUESTION_TYPE_DIVIDE_UNIT_1(R.string.menu_addition, R.string.sub_menu_unit_1)
-        , QUESTION_TYPE_DIVIDE_UNIT_10(R.string.menu_addition, R.string.sub_menu_unit_10)
-        , QUESTION_TYPE_DIVIDE_UNIT_100(R.string.menu_addition, R.string.sub_menu_unit_100)
-        , QUESTION_TYPE_FRACTION_ADD(R.string.menu_addition, R.string.menu_addition)
-        , QUESTION_TYPE_FRACTION_SUB(R.string.menu_addition, R.string.menu_subtraction)
-        , QUESTION_TYPE_QUIZ(R.string.menu_addition, R.string.sub_menu_start);
+        , QUESTION_TYPE_SUB_UNIT_1(R.string.menu_subtraction, R.string.sub_menu_unit_1)
+        , QUESTION_TYPE_SUB_UNIT_10(R.string.menu_subtraction, R.string.sub_menu_unit_10)
+        , QUESTION_TYPE_SUB_UNIT_100(R.string.menu_subtraction, R.string.sub_menu_unit_100)
+        , QUESTION_TYPE_MULTI_UNIT_1(R.string.menu_multiply, R.string.sub_menu_unit_1)
+        , QUESTION_TYPE_MULTI_UNIT_10(R.string.menu_multiply, R.string.sub_menu_unit_10)
+        , QUESTION_TYPE_MULTI_UNIT_100(R.string.menu_multiply, R.string.sub_menu_unit_100)
+        , QUESTION_TYPE_DIVIDE_UNIT_1(R.string.menu_divide, R.string.sub_menu_unit_1)
+        , QUESTION_TYPE_DIVIDE_UNIT_10(R.string.menu_divide, R.string.sub_menu_unit_10)
+        , QUESTION_TYPE_DIVIDE_UNIT_100(R.string.menu_divide, R.string.sub_menu_unit_100)
+        , QUESTION_TYPE_FRACTION_ADD(R.string.menu_fraction, R.string.menu_addition)
+        , QUESTION_TYPE_FRACTION_SUB(R.string.menu_fraction, R.string.menu_subtraction)
+        , QUESTION_TYPE_QUIZ(R.string.menu_quiz, R.string.sub_menu_start);
 
         QUESTION_TYPE(int mainMenu, int subMenu) {
             this.mainMenu = mainMenu;

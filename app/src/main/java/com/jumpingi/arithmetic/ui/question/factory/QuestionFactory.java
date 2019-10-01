@@ -36,31 +36,31 @@ public class QuestionFactory {
                 return new AddUnit100Question();
 
             case QUESTION_TYPE_SUB_UNIT_1:
-                return new AddUnit1Question();
+                return new SubUnit1Question();
 
             case QUESTION_TYPE_SUB_UNIT_10:
-                return new AddUnit1Question();
+                return new SubUnit10Question();
 
             case QUESTION_TYPE_SUB_UNIT_100:
-                return new AddUnit1Question();
+                return new SubUnit100Question();
 
             case QUESTION_TYPE_MULTI_UNIT_1:
-                return new AddUnit1Question();
+                return new MulUnit1Question();
 
             case QUESTION_TYPE_MULTI_UNIT_10:
-                return new AddUnit1Question();
+                return new MulUnit10Question();
 
             case QUESTION_TYPE_MULTI_UNIT_100:
-                return new AddUnit1Question();
+                return new MulUnit100Question();
 
             case QUESTION_TYPE_DIVIDE_UNIT_1:
-                return new AddUnit1Question();
+                return new DivUnit1Question();
 
             case QUESTION_TYPE_DIVIDE_UNIT_10:
-                return new AddUnit1Question();
+                return new DivUnit10Question();
 
             case QUESTION_TYPE_DIVIDE_UNIT_100:
-                return new AddUnit1Question();
+                return new DivUnit100Question();
 
             case QUESTION_TYPE_FRACTION_ADD:
                 return new AddUnit1Question();
