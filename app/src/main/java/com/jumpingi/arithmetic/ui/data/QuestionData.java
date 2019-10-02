@@ -8,6 +8,8 @@ public class QuestionData {
     private int mOperator;                  // 연산자 string 리소스 id
     private int mUnit;                      // 피 연산자 단위
     private List<String> mOperatorResult;   // 연산 결과
+    private List<Boolean> mRight;           // 채점 결과
+    private int mScore;                     // 점수
 
     public List<String> getOperandFirst() {
         return mOperandFirst;
@@ -47,5 +49,21 @@ public class QuestionData {
 
     public void setOperatorResult(List<String> operatorResult) {
         this.mOperatorResult = operatorResult;
+    }
+
+    public List<Boolean> getRight() {
+        return mRight;
+    }
+
+    public void setRight(List<Boolean> right) {
+        this.mRight = right;
+    }
+
+    public int getScore() {
+        return mScore;
+    }
+
+    public void setScore(int score) {
+        this.mScore = mScore;
     }
 }

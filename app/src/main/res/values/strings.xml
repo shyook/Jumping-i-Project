@@ -55,4 +55,8 @@
     <string name="multiply_operator">\u00D7</string>
     <string name="divide_operator">\u00F7</string>
 
+    <!-- 문제 -->
+    <string name="answer">정답 확인</string>
+    <string name="empty_answer">문제를 다 풀지 않았습니다.\n채점을 진행 하시겠습니까?</string>
+
 </resources>

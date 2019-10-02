@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 public class SubUnit100Question extends Question {
-    List<Integer> arrFirst = new ArrayList<>();
-    List<Integer> arrSecond = new ArrayList<>();
 
     @Override
     QuestionData doGenerationOperand(int num) {
@@ -24,12 +22,14 @@ public class SubUnit100Question extends Question {
             if (checkOperand(first, second)) {
                 arrFirst.add(first);
                 arrSecond.add(second);
+                arrResult.add(first / second);
                 generatingCount++;
             }
         }
 
         result.setOperandFirst(convertIntegerToString(arrFirst));
         result.setOperandSecond(convertIntegerToString(arrSecond));
+        result.setOperatorResult(convertIntegerToString(arrResult));
         result.setOperator(R.string.menu_subtraction);
         result.setUnit(Constant.UNIT_TYPE.UNIT_TYPE_100);
 

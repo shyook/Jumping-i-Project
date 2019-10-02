@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Question {
+    protected List<Integer> arrFirst = new ArrayList<>();
+    protected List<Integer> arrSecond = new ArrayList<>();
+    protected List<Integer> arrResult = new ArrayList<>();
     protected QuestionData result = new QuestionData();
 
     public enum QUESTION_TYPE {
