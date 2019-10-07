@@ -28,6 +28,34 @@
                 android:textStyle="bold"
                 android:textSize="15sp" />
 
+            <LinearLayout
+                android:id="@+id/answer_confirm_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/retry_bt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:text="@string/retry"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/score_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/total_score"
+                    android:textSize="15sp"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

@@ -30,4 +30,10 @@ public interface Constant {
         int UNIT_TYPE_2 = 20;
     }
 
+    enum QUESTION_MODE {
+        QUESTION_MODE_IN_PROGRESS
+        , QUESTION_MODE_CONFIRM_ANSWER
+        , QUESTION_MODE_RETRY
+    }
+
 }

@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
     private Context mContext;
     private QuestionData mQuestionData;             // 문제 데이터 클래스
     private Map<Integer, String> mResultValue;
+    private Constant.QUESTION_MODE mMode = Constant.QUESTION_MODE.QUESTION_MODE_IN_PROGRESS;    // 문제를 풀고 있는지, 채점 중인지
 
     QuestionAdapter(QuestionData data) {
         mQuestionData = data;
@@ -41,7 +43,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.item_question, parent, false);
-        QuestionAdapter.ViewHolder vh = new QuestionAdapter.ViewHolder(view);
+        QuestionAdapter.ViewHolder vh = new QuestionAdapter.ViewHolder(view, new CustomEditTextListener());
         return vh;
     }
 
@@ -50,19 +52,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         holder.firstOperand.setText(mQuestionData.getOperandFirst().get(position));
         holder.secondOperand.setText(mQuestionData.getOperandSecond().get(position));
         holder.operator.setText(UiUtils.convertNameToSign(mQuestionData.getOperator(), mContext));
-
-        // 결과 데이터가 들어 있다는 것은 확인 한 것이다.
-        if (mQuestionData.getRight() != null) {
-            holder.confirmAnswer.setVisibility(View.VISIBLE);
-            String strAnswer = mResultValue.get(position);
-            if (TextUtils.isEmpty(strAnswer)) {
-                strAnswer = "";
-            }
-            holder.resultEt.setText(strAnswer);
-            if (mQuestionData.getRight().get(position)) {
-                holder.confirmAnswer.setImageResource(R.drawable.checked);
-            }
-        }
+        holder.customEditTextListener.updatePosition(holder.getAdapterPosition());
+        holder.resultEt.setText(mResultValue.get(holder.getAdapterPosition()));
 
         // 자리수가 많아 지는 항목에 대해 UI Width 변경.
         if (mQuestionData.getOperator() == R.string.menu_multiply && mQuestionData.getUnit() == Constant.UNIT_TYPE.UNIT_TYPE_10) {
@@ -76,24 +67,28 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             holder.resultEt.setMinWidth(Utils.getDpToPixel(mContext, 60));
         }
 
-        // 결과를 저장 하기 위해 텍스트 변경에 대해 저장 한다.
-        holder.resultEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+        // 채점 중인 경우 정답 오답 표시.
+        if (mMode == Constant.QUESTION_MODE.QUESTION_MODE_CONFIRM_ANSWER || mMode == Constant.QUESTION_MODE.QUESTION_MODE_RETRY) {
+            holder.confirmAnswer.setVisibility(View.VISIBLE);
+            String strAnswer = mResultValue.get(position);
+            if (TextUtils.isEmpty(strAnswer)) {
+                strAnswer = "";
+            }
+            holder.resultEt.setText(strAnswer);
+            // 정답 확인 시에는 에디트 안되도록.
+            if (mMode == Constant.QUESTION_MODE.QUESTION_MODE_CONFIRM_ANSWER) {
+                holder.resultEt.setEnabled(false);
             }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            if (mQuestionData.getRight().get(position)) {
+                holder.confirmAnswer.setImageResource(R.drawable.checked);
+            } else {
+                if (mMode == Constant.QUESTION_MODE.QUESTION_MODE_RETRY) {
+                    holder.resultEt.setEnabled(true);
+                }
             }
+        }
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String strValue = editable.toString();
-                mResultValue.put(position, strValue);
-            }
-        });
     }
 
     @Override
@@ -119,8 +114,18 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         return mQuestionData;
     }
 
+    /**
+     * 정답 확인.
+     * @param data
+     */
     public void setQuestionData(QuestionData data) {
         mQuestionData = data;
+        mMode = Constant.QUESTION_MODE.QUESTION_MODE_CONFIRM_ANSWER;
+        notifyDataSetChanged();
+    }
+
+    public void setRetry() {
+        mMode = Constant.QUESTION_MODE.QUESTION_MODE_RETRY;
         notifyDataSetChanged();
     }
 
@@ -128,16 +133,46 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
         TextView firstOperand, secondOperand, operator;
         ImageView confirmAnswer;
         AppCompatEditText resultEt;
+        CustomEditTextListener customEditTextListener;
 
-        ViewHolder(View itemView) {
+        ViewHolder(View itemView, CustomEditTextListener customEditTextListener) {
             super(itemView);
 
             firstOperand = itemView.findViewById(R.id.first_operand_tv);
             secondOperand = itemView.findViewById(R.id.second_operand_tv);
             operator = itemView.findViewById(R.id.operator_tv);
             resultEt = itemView.findViewById(R.id.result_et);
+            resultEt.addTextChangedListener(customEditTextListener);
             confirmAnswer = itemView.findViewById(R.id.answer_confirm_iv);
+            this.customEditTextListener = customEditTextListener;
         }
 
+    }
+
+    private class CustomEditTextListener implements TextWatcher {
+        private int position;
+
+        public void updatePosition(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            // 결과를 저장 하기 위해 텍스트 변경에 대해 저장 한다.
+            if (mMode == Constant.QUESTION_MODE.QUESTION_MODE_IN_PROGRESS || mMode == Constant.QUESTION_MODE.QUESTION_MODE_RETRY) {
+                String strValue = editable.toString();
+                mResultValue.put(position, strValue);
+            }
+        }
     }
 }

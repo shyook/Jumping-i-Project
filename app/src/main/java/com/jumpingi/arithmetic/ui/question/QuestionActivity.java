@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,9 @@ import java.util.Map;
 
 public class QuestionActivity extends AppCompatActivity {
     private RecyclerView mQuestionRecyclerView;
+    private Button mConfirmBt, mRetryBt;
+    private TextView mTotalScoreTv;
+    private LinearLayout mConfirmLl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,13 +59,13 @@ public class QuestionActivity extends AppCompatActivity {
             Log.i("TEST", first + getString(generationData.getOperator()) + second + " = " + (Integer.valueOf(first) + Integer.valueOf(second)));
         }
 
-        Button confirm = findViewById(R.id.answer_bt);
-        confirm.setOnClickListener(new View.OnClickListener() {
+        mConfirmBt = findViewById(R.id.answer_bt);
+        mConfirmBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (adapter.getResultValue().size() != adapter.getQuestionData().getOperatorResult().size()) {
                     // 빈칸이 있는데 그래도 채점할건지 묻는 팝업 디스플레이
-                    DialogUtils.alert(QuestionActivity.this, getString(R.string.popup_default_title)
+                    DialogUtils.confirm(QuestionActivity.this, getString(R.string.popup_default_title)
                             , getString(R.string.empty_answer), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -77,6 +82,10 @@ public class QuestionActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mConfirmLl = findViewById(R.id.answer_confirm_ll);
+        mRetryBt = findViewById(R.id.retry_bt);
+        mTotalScoreTv = findViewById(R.id.score_tv);
     }
 
     private void checkAndNotify(QuestionAdapter adapter) {
@@ -97,5 +106,22 @@ public class QuestionActivity extends AppCompatActivity {
         data.setRight(Arrays.asList(arrResult));
         data.setScore(totalScore);
         adapter.setQuestionData(data);
+        confirmAnswerMode(totalScore, adapter);
+    }
+
+    private void confirmAnswerMode(int totalScore, final QuestionAdapter adapter) {
+        mConfirmBt.setVisibility(View.GONE);
+        mConfirmLl.setVisibility(View.VISIBLE);
+        mTotalScoreTv.setText(getString(R.string.total_score, totalScore));
+        mRetryBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mConfirmBt.setVisibility(View.VISIBLE);
+                mConfirmLl.setVisibility(View.GONE);
+                // 틀린 문제 다시 풀기
+                adapter.setRetry();
+            }
+        });
+
     }
 }
