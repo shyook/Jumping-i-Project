@@ -60,5 +60,6 @@
     <string name="empty_answer">문제를 다 풀지 않았습니다.\n채점을 진행 하시겠습니까?</string>
     <string name="retry">틀린 문제 다시 풀기</string>
     <string name="total_score">점수 : %1$d</string>
+    <string nmae="start_time">경과 시간 : %1$s</string>
 
 </resources>

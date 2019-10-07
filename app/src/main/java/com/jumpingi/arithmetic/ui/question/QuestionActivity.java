@@ -2,6 +2,7 @@ package com.jumpingi.arithmetic.ui.question;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import com.jumpingi.arithmetic.ui.data.QuestionData;
 import com.jumpingi.arithmetic.ui.question.factory.QuestionFactory;
 import com.jumpingi.arithmetic.utils.DialogUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -122,6 +124,10 @@ public class QuestionActivity extends AppCompatActivity {
                 adapter.setRetry();
             }
         });
+
+    }
+
+    private void displayTime() {
 
     }
 }
