@@ -19,19 +19,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jumpingi.arithmetic.constants.Constant;
+import com.jumpingi.arithmetic.ui.BaseActivity;
 import com.jumpingi.arithmetic.ui.menu.MainMenuActivity;
 import com.jumpingi.arithmetic.utils.DialogUtils;
 import com.jumpingi.arithmetic.utils.SharedPref;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private LinearLayout mWelcomeArea, mNameArea;
     private RelativeLayout mEmailArea;
     private EditText mPassword, mEmail, mName;
     private Spinner mGenderSpinner;
     private Button mStart, mReset;
-    private TextView mTitle, mNickname;
+    private TextView mNickname;
     private ImageView mUserImage;
     private SharedPref mSharedPref;
     private String mGender;
@@ -46,20 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         mSharedPref = SharedPref.getInstance(this);
-        Random rand = new Random();
-        final int background = Constant.BACKGROUND_GRADATION[rand.nextInt(Constant.TOTAL_BACKGROUND_GRADATION)];
+
+        setHeader();
 
         LinearLayout introBackground = findViewById(R.id.intro_rl);
         introBackground.setBackgroundResource(background);
-
-        RelativeLayout titleBackground = findViewById(R.id.toolbar_title_area_rl);
-        titleBackground.setBackgroundResource(background);
 
         mPassword = findViewById(R.id.password);   //Password EditText
         mEmail = findViewById(R.id.email);   //email EditText
         mName = findViewById(R.id.name);   //name EditText
         mStart = findViewById(R.id.intro_start_bt);
-        mTitle = findViewById(R.id.title_tv);
 
         mWelcomeArea = findViewById(R.id.intro_welcome_ll);
         mNickname = findViewById(R.id.intro_welcome_nickname_tv);

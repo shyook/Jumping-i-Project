@@ -25,6 +25,7 @@
     <string name="intro_button_start">CONTINUE</string>
 
     <!-- 메뉴 -->
+    <string name="menu">메뉴</string>
     <string name="menu_addition">더하기</string>
     <string name="menu_subtraction">빼기</string>
     <string name="menu_multiply">곱하기</string>
@@ -56,10 +57,11 @@
     <string name="divide_operator">\u00F7</string>
 
     <!-- 문제 -->
+    <string name="quiz">연산</string>
     <string name="answer">정답 확인</string>
     <string name="empty_answer">문제를 다 풀지 않았습니다.\n채점을 진행 하시겠습니까?</string>
     <string name="retry">틀린 문제 다시 풀기</string>
     <string name="total_score">점수 : %1$d</string>
-    <string nmae="start_time">경과 시간 : %1$s</string>
+    <string name="elapsed_time">경과 시간 : %1$s</string>
 
 </resources>

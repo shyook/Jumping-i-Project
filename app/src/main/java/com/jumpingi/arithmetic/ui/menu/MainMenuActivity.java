@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jumpingi.arithmetic.R;
 import com.jumpingi.arithmetic.constants.Constant;
+import com.jumpingi.arithmetic.ui.BaseActivity;
 import com.jumpingi.arithmetic.ui.question.QuestionActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainMenuActivity extends AppCompatActivity implements IMainMenuClickListener {
+public class MainMenuActivity extends BaseActivity implements IMainMenuClickListener {
     private RecyclerView mExpanderRecyclerView;
     private ArrayList<ArrayList> arrChildListHolder;
     private ArrayList<String> arrMainMenu;
@@ -32,6 +32,7 @@ public class MainMenuActivity extends AppCompatActivity implements IMainMenuClic
 
     private void init() {
         mExpanderRecyclerView = findViewById(R.id.main_menu_rv);
+        setHeader(R.string.menu);
 
         initExpander();
     }

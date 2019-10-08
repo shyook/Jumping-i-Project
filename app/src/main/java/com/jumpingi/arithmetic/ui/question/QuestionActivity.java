@@ -2,7 +2,6 @@ package com.jumpingi.arithmetic.ui.question;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,12 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jumpingi.arithmetic.R;
 import com.jumpingi.arithmetic.constants.Constant;
+import com.jumpingi.arithmetic.ui.BaseActivity;
 import com.jumpingi.arithmetic.ui.data.QuestionData;
 import com.jumpingi.arithmetic.ui.question.factory.QuestionFactory;
 import com.jumpingi.arithmetic.utils.DialogUtils;
@@ -23,12 +22,16 @@ import com.jumpingi.arithmetic.utils.DialogUtils;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends BaseActivity {
     private RecyclerView mQuestionRecyclerView;
     private Button mConfirmBt, mRetryBt;
-    private TextView mTotalScoreTv;
-    private LinearLayout mConfirmLl;
+    private TextView mTotalScoreTv, mElapseTime;
+    private LinearLayout mConfirmLl, mQuestionTimeLl;
+    private Timer mTimer;
+    private long mStartTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void init() {
+        setHeader(R.string.quiz);
         Bundle bundle = getIntent().getExtras();
         String type = null;
         if (bundle != null) {
@@ -86,8 +90,21 @@ public class QuestionActivity extends AppCompatActivity {
         });
 
         mConfirmLl = findViewById(R.id.answer_confirm_ll);
+        mQuestionTimeLl = findViewById(R.id.question_time_ll);
         mRetryBt = findViewById(R.id.retry_bt);
         mTotalScoreTv = findViewById(R.id.score_tv);
+        mElapseTime = findViewById(R.id.time_display_tv);
+
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                updateTime();
+            }
+        };
+
+        mTimer = new Timer();
+        mTimer.schedule(timerTask, 0, 1000);
+        mStartTime = System.currentTimeMillis();
     }
 
     private void checkAndNotify(QuestionAdapter adapter) {
@@ -112,13 +129,16 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void confirmAnswerMode(int totalScore, final QuestionAdapter adapter) {
-        mConfirmBt.setVisibility(View.GONE);
+        // 타이머 스탑
+        mTimer.cancel();
+        // UI 변경
+        mQuestionTimeLl.setVisibility(View.GONE);
         mConfirmLl.setVisibility(View.VISIBLE);
         mTotalScoreTv.setText(getString(R.string.total_score, totalScore));
         mRetryBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mConfirmBt.setVisibility(View.VISIBLE);
+                mQuestionTimeLl.setVisibility(View.VISIBLE);
                 mConfirmLl.setVisibility(View.GONE);
                 // 틀린 문제 다시 풀기
                 adapter.setRetry();
@@ -127,7 +147,15 @@ public class QuestionActivity extends AppCompatActivity {
 
     }
 
-    private void displayTime() {
+    private void updateTime() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                final SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
+                long endTime = System.currentTimeMillis();
+                mElapseTime.setText(getString(R.string.elapsed_time, sdf.format(endTime - mStartTime)));
+            }
+        });
 
     }
 }
