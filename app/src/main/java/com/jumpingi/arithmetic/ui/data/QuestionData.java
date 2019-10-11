@@ -1,69 +1,93 @@
 package com.jumpingi.arithmetic.ui.data;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.List;
 
+
+@Entity
 public class QuestionData {
-    private List<String> mOperandFirst;     // 첫번째 피 연산자
-    private List<String> mOperandSecond;    // 두번째 피 연산자
-    private int mOperator;                  // 연산자 string 리소스 id
-    private int mUnit;                      // 피 연산자 단위
-    private List<String> mOperatorResult;   // 연산 결과
-    private List<Boolean> mRight;           // 채점 결과
-    private int mScore;                     // 점수
+    @PrimaryKey
+    private int id;
+    private List<String> operandFirst;     // 첫번째 피 연산자
+    private List<String> operandSecond;    // 두번째 피 연산자
+    private int operator;                  // 연산자 string 리소스 id
+    private int unit;                      // 피 연산자 단위
+    private List<String> operatorResult;   // 연산 결과
+    private List<Boolean> right;           // 채점 결과
+    private int score;                     // 점수
+    private String date;                   // 날짜 (YYYY-MM-dd)
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public List<String> getOperandFirst() {
-        return mOperandFirst;
+        return operandFirst;
     }
 
     public void setOperandFirst(List<String> operandFirst) {
-        this.mOperandFirst = operandFirst;
+        this.operandFirst = operandFirst;
     }
 
     public List<String> getOperandSecond() {
-        return mOperandSecond;
+        return operandSecond;
     }
 
     public void setOperandSecond(List<String> operandSecond) {
-        this.mOperandSecond = operandSecond;
+        this.operandSecond = operandSecond;
     }
 
     public int getOperator() {
-        return mOperator;
+        return operator;
     }
 
     public void setOperator(int operator) {
-        this.mOperator = operator;
+        this.operator = operator;
     }
 
     public int getUnit() {
-        return mUnit;
+        return unit;
     }
 
     public void setUnit(int unit) {
-        this.mUnit = unit;
+        this.unit = unit;
     }
 
     public List<String> getOperatorResult() {
-        return mOperatorResult;
+        return operatorResult;
     }
 
     public void setOperatorResult(List<String> operatorResult) {
-        this.mOperatorResult = operatorResult;
+        this.operatorResult = operatorResult;
     }
 
     public List<Boolean> getRight() {
-        return mRight;
+        return right;
     }
 
     public void setRight(List<Boolean> right) {
-        this.mRight = right;
+        this.right = right;
     }
 
     public int getScore() {
-        return mScore;
+        return score;
     }
 
     public void setScore(int score) {
-        this.mScore = mScore;
+        this.score = this.score;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

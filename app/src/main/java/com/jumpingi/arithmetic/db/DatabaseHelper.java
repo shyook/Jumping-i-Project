@@ -1,43 +1,41 @@
 package com.jumpingi.arithmetic.db;
 
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
-import com.j256.ormlite.support.ConnectionSource;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
+
 import com.jumpingi.arithmetic.db.constants.DatabaseConstants;
+import com.jumpingi.arithmetic.db.utils.Converters;
+import com.jumpingi.arithmetic.ui.data.QuestionData;
 
-public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+@Database(entities = {QuestionData.class}, version = 1)
+@TypeConverters(Converters.class)
+public abstract class DatabaseHelper extends RoomDatabase {
     /*******************************************************************************
      * Variable.
      *******************************************************************************/
     private static Context mContext;
+    private static volatile DatabaseHelper instance;
 
     /*******************************************************************************
      * Init.
      *******************************************************************************/
-    public DatabaseHelper(Context context) {
-        super(context, DatabaseConstants.ARITHMETIC_HISTORY_DATABASE_NAME, null, DatabaseConstants.ARITHMETIC_HISTORY_DATABASE_VERSION);
+    private static DatabaseHelper create(final Context context) {
+        return Room.databaseBuilder(context
+                , DatabaseHelper.class
+                , DatabaseConstants.ARITHMETIC_HISTORY_DATABASE_NAME).build();
     }
 
-    private static class SingletonHolder {
-        private static DatabaseHelper Instance = new DatabaseHelper(mContext);
-    }
-
-    public static DatabaseHelper getInstance(Context context) {
-        if (context != null) {
-            mContext = context;
+    public static synchronized DatabaseHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = create(context);
         }
-        return DatabaseHelper.SingletonHolder.Instance;
+        return instance;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
+    public abstract DataAccessObject getQuestionDao();
 
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
-
-    }
 }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.jumpingi.arithmetic.R;
 import com.jumpingi.arithmetic.constants.Constant;
+import com.jumpingi.arithmetic.db.DatabaseHelper;
 import com.jumpingi.arithmetic.ui.BaseActivity;
 import com.jumpingi.arithmetic.ui.data.QuestionData;
 import com.jumpingi.arithmetic.ui.question.factory.QuestionFactory;
@@ -21,6 +22,7 @@ import com.jumpingi.arithmetic.utils.DialogUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -124,8 +126,12 @@ public class QuestionActivity extends BaseActivity {
 
         data.setRight(Arrays.asList(arrResult));
         data.setScore(totalScore);
+        data.setDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         adapter.setQuestionData(data);
         confirmAnswerMode(totalScore, adapter);
+        // 데이터 베이스 저장
+        // TODO 2019.10.11 최초 채점시 한번만 데이터 베이스에 저장 하도록 수정 필요.
+        DatabaseHelper.getInstance(this).getQuestionDao().insert(data);
     }
 
     private void confirmAnswerMode(int totalScore, final QuestionAdapter adapter) {
